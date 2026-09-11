@@ -551,105 +551,63 @@ main{
 
 var PLANS = {
   saturday: {
-    title: "Boxing & Conditioning",
-    sub: "Bag work, pad combos, and a HIIT finisher",
-    boxingMinutes: 24,
+    title: "Weightlifting + Boxing",
+    sub: "Full lifting session, then bag work, footwork, and core",
+    boxingMinutes: 35,
     blocks: [
       {
-        id:"sat-warmup", name:"Warm-Up", type:"warmup", meta:"~4 min",
+        id:"sat-strength", name:"Weightlifting", type:"strength", meta:"~60 min",
         items:[
-          {id:"sat-w-1", name:"Jumping Jacks", detail:"60 sec", timer:{duration:60}},
-          {id:"sat-w-2", name:"Arm Circles", detail:"30 sec each direction", timer:{duration:60}},
-          {id:"sat-w-3", name:"High Knees", detail:"30 sec", timer:{duration:30}},
-          {id:"sat-w-4", name:"Bodyweight Squats", detail:"15 reps (est.)", timer:{duration:30}},
-          {id:"sat-w-5", name:"Easy Shadow Boxing", detail:"60 sec, loosen up", timer:{duration:60}}
+          {id:"sat-st-1", name:"Squat", detail:"4 x 6-8"},
+          {id:"sat-st-2", name:"Bench Press", detail:"4 x 6-8"},
+          {id:"sat-st-3", name:"Romanian Deadlift", detail:"3 x 8-10"},
+          {id:"sat-st-4", name:"Lat Pulldown", detail:"3 x 8-12"},
+          {id:"sat-st-5", name:"Shoulder Press", detail:"3 x 8-10"},
+          {id:"sat-st-6", name:"Cable Row", detail:"3 x 10"},
+          {id:"sat-st-7", name:"Biceps + Triceps", detail:"2 x 12 each"}
         ]
       },
       {
-        id:"sat-strength", name:"Strength Circuit", type:"strength", meta:"3 rounds",
+        id:"sat-boxing", name:"Boxing", type:"boxing", meta:"30-40 min",
         items:[
-          {id:"sat-s-1", name:"Push-Ups", detail:"3 x 12"},
-          {id:"sat-s-2", name:"Dumbbell Rows", detail:"3 x 10 each side"},
-          {id:"sat-s-3", name:"Goblet Squats", detail:"3 x 15"},
-          {id:"sat-s-4", name:"Plank Hold", detail:"3 x 30 sec"}
-        ]
-      },
-      {
-        id:"sat-boxing", name:"Bag &amp; Pad Work", type:"boxing", meta:"~24 min",
-        items:[
-          {id:"sat-b-1", name:"Jab-Cross Combos", detail:"4 rounds x 2:00, 1:00 rest", timer:{rounds:4, work:120, rest:60}},
-          {id:"sat-b-2", name:"Hook-Uppercut Combos", detail:"3 rounds x 2:00, 1:00 rest", timer:{rounds:3, work:120, rest:60}},
-          {id:"sat-b-3", name:"Defense &amp; Slip Drills", detail:"3 rounds x 1:30, 0:45 rest", timer:{rounds:3, work:90, rest:45}},
-          {id:"sat-b-4", name:"Freestyle Combos", detail:"2 rounds x 3:00, 1:00 rest", timer:{rounds:2, work:180, rest:60}}
-        ]
-      },
-      {
-        id:"sat-hiit", name:"HIIT Finisher", type:"cardio", meta:"4 rounds circuit",
-        circuit:{rounds:4, work:40, rest:20},
-        items:[
-          {id:"sat-h-1", name:"Burpees"},
-          {id:"sat-h-2", name:"Mountain Climbers"},
-          {id:"sat-h-3", name:"Jump Squats"},
-          {id:"sat-h-4", name:"Plank Jacks"}
-        ]
-      },
-      {
-        id:"sat-core", name:"Core Finisher", type:"finisher", meta:"3 rounds",
-        items:[
-          {id:"sat-c-1", name:"Bicycle Crunches", detail:"3 x 20"},
-          {id:"sat-c-2", name:"Russian Twists", detail:"3 x 20"},
-          {id:"sat-c-3", name:"Leg Raises", detail:"3 x 15"}
+          {id:"sat-b-1", name:"Jump Rope", detail:"5 min continuous", timer:{rounds:1, work:300, rest:0}},
+          {id:"sat-b-2", name:"Shadowboxing", detail:"3 rounds x 3:00, 1:00 rest", timer:{rounds:3, work:180, rest:60}},
+          {id:"sat-b-3", name:"Heavy Bag", detail:"5 rounds x 3:00, 1:00 rest", timer:{rounds:5, work:180, rest:60}},
+          {id:"sat-b-4", name:"Footwork", detail:"3 rounds x 2:00, 0:30 rest", timer:{rounds:3, work:120, rest:30}},
+          {id:"sat-b-5", name:"Core", detail:"10 min continuous", timer:{rounds:1, work:600, rest:0}}
         ]
       }
     ]
   },
   sunday: {
-    title: "Strength & Technique",
-    sub: "Heavier lifts, footwork drills, light conditioning",
-    boxingMinutes: 13,
+    title: "Boxing + HIIT + Full Body",
+    sub: "Full-body strength, boxing rounds, and a HIIT finisher",
+    boxingMinutes: 24,
     blocks: [
       {
-        id:"sun-warmup", name:"Warm-Up", type:"warmup", meta:"~3 min",
+        id:"sun-strength", name:"Full-Body Weights", type:"strength", meta:"~45 min",
         items:[
-          {id:"sun-w-1", name:"Jump Rope", detail:"60 sec", timer:{duration:60}},
-          {id:"sun-w-2", name:"Leg Swings", detail:"40 sec", timer:{duration:40}},
-          {id:"sun-w-3", name:"World's Greatest Stretch", detail:"40 sec", timer:{duration:40}},
-          {id:"sun-w-4", name:"Shadow Boxing Footwork", detail:"60 sec", timer:{duration:60}}
+          {id:"sun-st-1", name:"Deadlift", detail:"3 x 5"},
+          {id:"sun-st-2", name:"Leg Press", detail:"3 x 10"},
+          {id:"sun-st-3", name:"Incline Dumbbell Press", detail:"3 x 10"},
+          {id:"sun-st-4", name:"Seated Row", detail:"3 x 10"},
+          {id:"sun-st-5", name:"Lunges", detail:"3 x 10 each leg"},
+          {id:"sun-st-6", name:"Lateral Raises", detail:"3 x 15"}
         ]
       },
       {
-        id:"sun-strength", name:"Strength", type:"strength", meta:"4 lifts",
+        id:"sun-boxing", name:"Boxing", type:"boxing", meta:"20-30 min",
         items:[
-          {id:"sun-s-1", name:"Dumbbell Bench Press", detail:"4 x 8"},
-          {id:"sun-s-2", name:"Bent-Over Rows", detail:"4 x 8"},
-          {id:"sun-s-3", name:"Romanian Deadlifts", detail:"3 x 10"},
-          {id:"sun-s-4", name:"Walking Lunges", detail:"3 x 12 each leg"},
-          {id:"sun-s-5", name:"Overhead Press", detail:"3 x 10"}
+          {id:"sun-b-1", name:"Shadowboxing", detail:"3 rounds x 3:00, 1:00 rest", timer:{rounds:3, work:180, rest:60}},
+          {id:"sun-b-2", name:"Bag", detail:"4 rounds x 3:00, 1:00 rest", timer:{rounds:4, work:180, rest:60}},
+          {id:"sun-b-3", name:"Speed Combinations", detail:"3 rounds x 1:00, 0:30 rest", timer:{rounds:3, work:60, rest:30}}
         ]
       },
       {
-        id:"sun-boxing", name:"Footwork &amp; Technique", type:"boxing", meta:"~13 min",
+        id:"sun-hiit", name:"HIIT", type:"cardio", meta:"8-10 rounds circuit",
+        circuit:{rounds:9, work:30, rest:60},
         items:[
-          {id:"sun-b-1", name:"Footwork Ladder Drills", detail:"3 rounds x 1:30, 0:30 rest", timer:{rounds:3, work:90, rest:30}},
-          {id:"sun-b-2", name:"Jab Timing Drills", detail:"3 rounds x 1:30, 0:30 rest", timer:{rounds:3, work:90, rest:30}},
-          {id:"sun-b-3", name:"Combo Precision Work", detail:"2 rounds x 2:00, 0:45 rest", timer:{rounds:2, work:120, rest:45}}
-        ]
-      },
-      {
-        id:"sun-cardio", name:"Cardio Finisher", type:"cardio", meta:"3 rounds circuit",
-        circuit:{rounds:3, work:30, rest:20},
-        items:[
-          {id:"sun-cd-1", name:"Jump Rope"},
-          {id:"sun-cd-2", name:"High Knees"},
-          {id:"sun-cd-3", name:"Skaters"}
-        ]
-      },
-      {
-        id:"sun-core", name:"Finisher", type:"finisher", meta:"core",
-        items:[
-          {id:"sun-c-1", name:"Plank Hold", detail:"3 x 40 sec"},
-          {id:"sun-c-2", name:"Side Plank", detail:"2 x 30 sec each side"},
-          {id:"sun-c-3", name:"Dead Bug", detail:"3 x 12 each side"}
+          {id:"sun-h-1", name:"All-Out Effort"}
         ]
       }
     ]
@@ -741,7 +699,7 @@ function scaleBoxingTimer(work, rest, level){
 function scaleHiit(work, rest, rounds, level){
   var w = Math.min(60, round5(work * (1 + level*0.08)));
   var r = Math.max(10, round5(rest * (1 - level*0.12)));
-  var rd = Math.min(6, rounds + Math.floor(level/2));
+  var rd = rounds + Math.floor(level/2);
   return {work:w, rest:r, rounds:rd};
 }
 
