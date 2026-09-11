@@ -338,7 +338,7 @@ svg{display:block;}
 </head>
 <body>
 <div id="app">
-  <div id="saveWarning">Progress isn't saving in this viewer. Open the file through the host app's built-in preview, or use Backup in Profile to copy your data out.</div>
+  <div id="saveWarning">Progress isn't saving — this browser is blocking storage (private mode can do this). Use Backup in Profile to copy your data out.</div>
   <div id="screen"></div>
   <nav id="nav"></nav>
   <div id="overlayRoot"></div>
@@ -471,9 +471,21 @@ function blankState(){
 }
 let S = blankState();
 
+// Claude's artifact host provides window.storage; a normal website (e.g. Vercel) falls back to localStorage.
+const STORE = (()=>{
+  const ws = window.storage;
+  if(ws && typeof ws.get==='function' && typeof ws.set==='function'){
+    return {get:k=>ws.get(k,false), set:(k,v)=>ws.set(k,v,false)};
+  }
+  try{
+    const t='__cw_probe'; localStorage.setItem(t,'1'); localStorage.removeItem(t);
+    return {get:k=>localStorage.getItem(k), set:(k,v)=>localStorage.setItem(k,v)};
+  }catch(e){ return null; }
+})();
+
 function loadState(){
   try{
-    const raw = window.storage.get(KEY, false);
+    const raw = STORE.get(KEY);
     if(raw && typeof raw.then==='function'){
       return raw.then(v=>{ hydrate(v); return migrateIfNeeded(); }).catch(e=>{console.error(e);});
     }
@@ -497,7 +509,7 @@ function hydrate(raw){
 function migrateIfNeeded(){
   if(S.onboarded || S.weightLog.length || S.sessions.length) return Promise.resolve();
   try{
-    const old = window.storage.get(KEY_V1, false);
+    const old = STORE.get(KEY_V1);
     const apply = v => {
       if(!v) return;
       try{
@@ -519,7 +531,7 @@ function migrateIfNeeded(){
 }
 function save(){
   try{
-    const r = window.storage.set(KEY, JSON.stringify(S), false);
+    const r = STORE.set(KEY, JSON.stringify(S));
     if(r && typeof r.then==='function') r.then(hideWarn).catch(e=>{console.error(e);showWarn();});
     else hideWarn();
   }catch(e){ console.error('save',e); showWarn(); }
@@ -2000,7 +2012,7 @@ function boot(){
   view={name:S.onboarded?'home':'splash',param:null};
   render();
 }
-if(!window.storage || typeof window.storage.get!=='function'){
+if(!STORE){
   showWarn(); boot();
 }else{
   Promise.resolve(loadState()).then(boot).catch(boot);
